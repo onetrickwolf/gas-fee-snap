@@ -14,8 +14,10 @@ jobs:
           git config user.name github-actions
           git config user.email github-actions@github.com
           yarn
-          yarn version --prerelease --preid=dev
+          yarn version --prerelease --preid=dev --no-git-tag-version
           yarn build
           git add .
-          git commit -m "[skip actions]"
+          VERSION=$(node -p "require('./package.json').version")
+          git commit -m "${VERSION} [skip actions]"
+          git rebase -i HEAD~3
           git push
