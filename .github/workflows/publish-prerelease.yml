@@ -1,0 +1,21 @@
+name: Build, Lint, and Test
+on:
+  push:
+    branches:
+      - main
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: |
+          yarn
+          yarn version --prerelease --preid=dev
+          yarn build
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add .
+          git commit -m "[skip actions]"
+          git push
