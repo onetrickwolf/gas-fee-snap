@@ -1,6 +1,6 @@
 {
   "name": "otw-template-snap",
-  "version": "0.8.1-dev.0",
+  "version": "0.8.1-dev.1",
   "description": "The 'Hello, world!' of MetaMask Snaps.",
   "repository": {
     "type": "git",
