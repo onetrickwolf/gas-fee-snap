@@ -19,5 +19,7 @@ jobs:
           git add .
           VERSION=$(node -p "require('./package.json').version")
           git commit -m "${VERSION} [skip actions]"
-          git rebase -i HEAD~3
           git push
+      - run: yarn publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
