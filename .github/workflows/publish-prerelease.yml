@@ -11,16 +11,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: |
-          git config user.name github-actions
-          git config user.email github-actions@github.com
           yarn
           yarn version --prerelease --preid=$GITHUB_SHA --no-git-tag-version
       - run: yarn build
-      - run: |
-          git add .
-          VERSION=$(node -p "require('./package.json').version")
-          git commit -m "${VERSION} [skip actions]"
-          git push
       - uses: actions/setup-node@v3
         with:
           node-version: '16.x'
