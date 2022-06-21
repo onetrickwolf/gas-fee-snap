@@ -13,8 +13,9 @@ jobs:
       - run: |
           yarn
           VERSION=$(node -p "require('./package.json').version")
-          echo '${VERSION}-$GITHUB_SHA'
-          yarn version --new-version ${VERSION}-$GITHUB_SHA --no-git-tag-version
+          HASH=$(git rev-parse --short HEAD)
+          DATE=$(date +%Y%m%d)
+          yarn version --new-version ${VERSION}-${HASH}${DATE} --no-git-tag-version
       - run: yarn build
       - uses: actions/setup-node@v3
         with:
