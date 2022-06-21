@@ -29,7 +29,7 @@
   </body>
 
   <script>
-    const snapId = `local:${window.location.href}`;
+    const snapId = `npm:otw-template-snap`;
 
     const connectButton = document.querySelector('button.connect')
     const sendButton = document.querySelector('button.sendHello')
@@ -42,7 +42,7 @@
       await ethereum.request({
         method: 'wallet_enable',
         params: [{
-          wallet_snap: { [snapId]: {} },
+          wallet_snap: { [snapId]: { version: '0.8.1-dev.1'} },
         }]
       })
     }
